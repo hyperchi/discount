@@ -1,0 +1,61 @@
+@import "_vz_theme";
+@import "_media_queries";
+
+/*this is properties import example*/
+%clickable {
+  cursor: pointer
+}
+%commonStyle{
+      color: $vz_wht;
+      height: 2em;
+      box-shadow: none;
+    	background-color: $vz_red;
+      font-family: NeueHass55Bold;
+      font-weight: bold;
+      cursor: pointer;
+      &:hover{
+        background-color: red;
+      }
+}
+%responsiveCommon{
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+}
+%smallBtn{
+  @extend %commonStyle;
+    font-size: 1.071em;
+    padding: 0.357em 1.071em 0.357em 1.071em;
+    max-width: 30vw;
+  @include respond(medium) {
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+  }
+  @include respond(small) {
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+    // font-size: 0.714em;
+    font-size: 0.9em;
+    max-width: 25vw;
+    padding: 0.357em 0.714em 0.357em 0.714em;
+  }
+}
+%bigBtn{
+	@extend %commonStyle;
+}
+%mediumBtn{
+	@extend %commonStyle;
+}
+/*this is class import example*/
+.Btn{
+  @extend %smallBtn
+}
+a {
+      text-decoration:none;
+      font-size: 1.071em;
+      color: #fff;
+  }
+
+ 

@@ -1,0 +1,193 @@
+@import "_vz_theme";
+@import "_media_queries";
+
+.upArray {
+    width: 0;
+    height: 0;
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-bottom: 5px solid $vz_red;
+    display: inline-block;
+}
+
+.dwnArray {
+    width: 0;
+    height: 0;
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-top: 5px solid $vz_red;
+    display: inline-block;
+}
+
+.iconText {
+        width: 7em;
+        margin-top: .5em;
+        vertical-align: top;
+        display: inline-block;
+        text-align: center;
+        line-height: 1.2em;
+        font-family:NeueHass65Medium;
+        font-size: 14px;
+        @include respond(small) { width: 5em; }
+}
+
+.icon {
+    width: 24px;
+    height: 24px;
+}
+
+.verizon_logo {
+    vertical-align: middle;
+    margin-bottom: 1.75em;
+    @include respond(small) { display: none; }
+}
+
+.TitleContainer {
+    position: absolute;
+    margin-left: 20px;
+    left:3em;
+    display: inline-flex;
+}
+
+img {
+    transition: 1s;
+}
+
+&[data-animate="animate"]:not([data-cartstate="0"]) img {
+    animation: cartBounce 2s;
+    animation-fill-mode: forwards;
+}
+
+@keyframes cartBounce {
+  0%   { transform: scale(1); }
+  50%  { transform: scale(2); }
+  100% { transform: scale(1); }
+}
+	.large-icon-outer {
+		padding: 0;
+		width: 7vw;
+		height: 7vw;
+		border-radius: 5vw;	
+		@extend %flex;
+        flex-direction: row;
+        @include respond(small) { 
+            width: 13vw;
+            height: 13vw;
+        }
+	}
+.iconCircle{
+    color:$function-gray1;
+	display: inline-flex;
+	align-items: center;
+    justify-content: center;
+    margin-right: 5em;
+    font-family:NeueHass75Medium;
+    font-size:16px;
+    @include respond(small) { 
+        margin: 0.3em 0em 0.3em 0.1em;
+        flex: 1; 
+    }
+    .circle{
+        width: 36px;
+        height: 36px;
+        background: $function-gray1;
+        border-radius: 100%;
+        -webkit-border-radius: 100%;
+        left: 25%;
+        top: 5%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    .greenCircle{
+        background: $vz_green_success;
+    }
+    .whiteCircle{
+        background: $vz_wht;
+    }
+    .grayFG3{
+        color:$function-gray3;
+        font-size:14px;
+    }
+    .grayFG4{
+        color:$function-gray4;
+        font-size:14px;
+    }
+    .currentPage{
+        color:$vz_wht;
+    }
+    ul{
+        list-style-type: none;
+        li {
+            margin-left: 0.5em;
+        }
+    }
+}
+
+%icon-common {
+    @extend %clickable;
+    font-size: 10pt;
+    // padding: 1.000em;
+    padding-left: 0.375em;
+    padding-right: 0px;
+    margin-right: 0.313em;
+    overflow: visible;
+
+    @include respond(medium) {
+      padding-left: 0;
+      margin-right: 0;
+    }
+    
+    img {
+      vertical-align: middle;
+      width: 80%;
+      transition: 1s;
+    }
+}
+.medium-icon-outer {
+    @extend %icon-common;
+    width: 35px;
+    height: 35px;
+    display: inline-block;
+    @include respond(medium) {
+        width: 30px;
+        height: 30px;        
+    }
+}
+.mini-icon-outer {
+    @extend %icon-common;
+    margin-right: 0px;
+    padding-left: .175em;
+    width: 20px;
+    height: 20px;
+    display: inline-block;
+    img {
+        width: 100%;
+    }
+}
+
+// Milestone status
+.rowIcon.expired {
+    background: url(../../assets/quote_expired.svg) no-repeat;
+    background-position: center; 
+}
+.rowIcon.success {
+    background: url(../../assets/success.svg) no-repeat;
+    background-position: center; 
+}
+.rowIcon.warning {
+    background: url(../../assets/warning.svg) no-repeat;
+    background-position: center; 
+}
+.rowIcon.edited {
+    background: url(../../assets/editedInPQ.svg) no-repeat;
+    background-size: contain;
+    height: 1.6em;
+    background-position: center;
+}
+.rowIcon.progress {
+    background: url(../../assets/newLoading.gif) no-repeat;
+    background-size: contain;
+    background-position: center; 
+}
+

@@ -1,0 +1,21 @@
+<?xml version="1.0" ?>
+<svg enable-background="new 0 0 32 32" version="1.1" viewBox="0 0 32 32" xml:space="preserve"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <style type="text/css">
+  	.st0{fill:#FFF;stroke:#9C9C9C;stroke-width:2.0;stroke-miterlimit:10;}
+  </style>
+  <g id="Flat">
+    <g>
+      <circle cx="16" cy="16" class="st0" r="16"/>
+    </g>
+    <g>
+      <rect class="st0" height="13.422" width="13.422" x="6.648" y="11.93"/>
+    </g>
+    <g>
+      <rect class="st0" height="13.422" width="13.422" x="9.289" y="9.289"/>
+    </g>
+    <g>
+      <rect class="st0"  height="13.422" width="13.422" x="11.93" y="6.648"/>
+    </g>
+  </g>
+</svg>
