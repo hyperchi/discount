@@ -65,3 +65,29 @@ export function fetchPostsIfNeeded(reddit) {
     }
   }
 }
+
+
+export function getMock() {
+  let res = [
+    {
+      bg: '../../assets/a.jpg',
+      icon: '../../assets/b.png',
+      'offer-title': "30% Off + Free Shipping",
+      'coupon': "J. Crew Factory Code",
+    },
+    {
+      bg: '../../assets/a.jpg',
+      icon: '../../assets/b.png',
+      'offer-title': "30% Off + Free Shipping",
+      'coupon': "J. Crew Factory Code",
+    },
+    {
+      bg: '../../assets/a.jpg',
+      icon: '../../assets/b.png',
+      'offer-title': "30% Off + Free Shipping",
+      'coupon': "J. Crew Factory Code",
+    },
+  ];
+  return res;
+
+}

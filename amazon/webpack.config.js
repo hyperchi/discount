@@ -31,7 +31,7 @@ module.exports = {
       },
       {
           test: /.*\.(gif|png|jpe?g)$/i, // |svg
-          loader: 'file?hash=sha512&digest=hex&name=[hash].[ext]'
+          loader: 'url-loader?limit=8192'
       },
       { test: /\.woff(\?.*)?$/,     loader: "url-loader?prefix=fonts/&name=[path][name].[ext]&limit=10000&mimetype=application/font-woff" },
       { test: /\.woff2(\?.*)?$/,    loader: "url-loader?prefix=fonts/&name=[path][name].[ext]&limit=10000&mimetype=application/font-woff2" },

@@ -1,6 +1,6 @@
 import React, { Component, PropTypes } from 'react'
 import { connect } from 'react-redux'
-import { selectReddit, fetchPostsIfNeeded, invalidateReddit } from '../actions'
+import { selectReddit, fetchPostsIfNeeded, invalidateReddit, getMock } from '../actions'
 import Picker from '../components/Picker'
 import Posts from '../components/Posts'
 import Header from '../components/Header'
@@ -17,7 +17,7 @@ class App extends Component {
   //初始化渲染后触发
   componentDidMount() {
     console.log('执行componentDidMount');
-    const { dispatch, selectedReddit } = this.props
+    const { dispatch, selectedReddit, mockDate } = this.props
     dispatch(fetchPostsIfNeeded(selectedReddit))
   }
 
@@ -43,7 +43,8 @@ class App extends Component {
   }
 
   render() {
-    const { selectedReddit, posts, isFetching, lastUpdated } = this.props
+    const { selectedReddit, posts, isFetching, lastUpdated, mockDate } = this.props
+    console.error("!!!!!",this.props);
       // <div>
       //   <Picker value={selectedReddit}
       //           onChange={this.handleChange}
@@ -77,7 +78,7 @@ class App extends Component {
     return (
       <div>
         <Header></Header>
-        <Content></Content>
+        <Content data={mockDate}></Content>
         <Footer></Footer>
       </div>
     )
@@ -87,6 +88,7 @@ class App extends Component {
 App.propTypes = {
   selectedReddit: PropTypes.string.isRequired,
   posts: PropTypes.array.isRequired,
+  mock: PropTypes.array.isRequired,
   isFetching: PropTypes.bool.isRequired,
   lastUpdated: PropTypes.number,
   dispatch: PropTypes.func.isRequired
@@ -104,15 +106,14 @@ function mapStateToProps(state) {
     isFetching: true,
     items: []
   }
-  console.error(isFetching);
-  console.error(lastUpdated);
-  console.error(posts);
 
+  let mockDate  = getMock();
   return {
     selectedReddit,
     posts,
     isFetching,
-    lastUpdated
+    lastUpdated,
+    mockDate
   }
 }
 

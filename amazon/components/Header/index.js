@@ -1,11 +1,11 @@
 import React, { Component, PropTypes } from 'react'
-
+import ss from './styles.scss';
 export default class Picker extends Component {
   render() {
     // const { value, onChange, options } = this.props
 
     return (
-      <div>header</div>
+      <div className="header">header111</div>
     )
   }
 }
