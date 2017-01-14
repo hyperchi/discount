@@ -1,15 +1,38 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
+import ReactDOM from 'react-dom';
+
+// user defined
 import './App.css';
+import Header from './components/Header'
+import Content from './components/Content'
 
 class App extends Component {
-  render() {
+    constructor(props) {
+        super(props);
+        this.render = this.render.bind(this);
+        this.state = {
+            items: this.props.items,
+            disabled: true
+        };
+    }
+
+    componentDidMount() {
+        this.setState({
+            disabled: false
+        })
+    }
+
+    handleClick() {
+        this.setState({
+            items: this.state.items.concat('Item ' + this.state.items.length)
+        })
+    }
+
+    render() {
     return (
-      <div className="App">
-        <div className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h2>Amazon Discounts</h2>
-        </div>
+      <div className="">
+          <Header></Header>
+          {/*<Content></Content>*/}
       </div>
     );
   }
