@@ -6,6 +6,6 @@ export function getSearchResultRequest(key_words) {
     return Request.get(url)
         .query({"optional1":key_words})
         .then((response) => {
-            return JSON.parse(response.res.text).values
+            return JSON.parse(response.res.text).values;
         });
 }

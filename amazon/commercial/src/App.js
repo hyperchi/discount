@@ -22,6 +22,10 @@ class App extends Component {
         })
     }
 
+    componentWillMount() {
+
+    }
+
     handleClick() {
         this.setState({
             items: this.state.items.concat('Item ' + this.state.items.length)
