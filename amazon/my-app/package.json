@@ -1,0 +1,28 @@
+{
+  "name": "commercial",
+  "version": "0.1.0",
+  "private": true,
+  "devDependencies": {
+    "babel-cli": "^6.18.0",
+    "babel-preset-es2015": "^6.18.0",
+    "react-scripts": "0.8.4"
+  },
+  "dependencies": {
+    "autosuggest-highlight": "^3.1.0",
+    "classnames": "^2.2.5",
+    "react": "^15.4.1",
+    "react-autosuggest": "^8.0.0",
+    "react-dom": "^15.4.1",
+    "superagent": "^3.3.2"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject"
+  },
+  "description": "This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).",
+  "main": "index.js",
+  "author": "",
+  "license": "ISC"
+}
