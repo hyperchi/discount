@@ -14,6 +14,16 @@ class Handler(tornado.web.RequestHandler):
     """
     rest service for web api service
     """
+    def set_default_headers(self):
+        self.set_header("Access-Control-Allow-Origin", "*")
+        self.set_header("Access-Control-Allow-Headers", "x-requested-with")
+        self.set_header('Access-Control-Allow-Methods', ' PUT, DELETE, OPTIONS')
+
+    def options(self):
+        # no body
+        self.set_status(204)
+        self.finish()
+
     def initialize(self):
         self.logger = logging.getLogger("api_logger")
 
@@ -27,8 +37,7 @@ class Handler(tornado.web.RequestHandler):
         optional1 = self.get_argument("optional1")
         print optional1
         result = {}
-        values = process.process_result()
-        result["values"] = values
+        result = process.process_result()
         self.finish(json.dumps(result))
 
 
