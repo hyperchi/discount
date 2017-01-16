@@ -139,8 +139,8 @@ class SearchBar extends React.Component {
                     getSuggestionValue={getSuggestionValue}
                     renderSuggestion={renderSuggestion}
                     inputProps={inputProps}/>
-                <input className="search-bar-submit"
-                    type="submit"
+                <div className="search-bar-submit"
+
                     onClick={this.onSearch}
                     // change "" to {this.onSearch()} it will break
                 />
