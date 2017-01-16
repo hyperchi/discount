@@ -117,8 +117,9 @@ class SearchBar extends React.Component {
     };
     onSearch = () => {
         let searchWords = this.state.value;
-        let searchResults = getSearchResultRequest(searchWords)
-        return searchResults
+        let searchResults = getSearchResultRequest(searchWords);
+        console.error(searchResults);
+        return searchResults;
 
     };
 
