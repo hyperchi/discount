@@ -9,6 +9,29 @@
     color: white;
 }
 
+.container {
+	display: -webkit-flex;
+	display: flex;    
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+    width: 90%;
+    margin: auto;    
+    height: 45px;
+}
+    .container :nth-child(n) {
+        flex: 1;
+    }    
+
+    .btn {
+        border: 1px solid;
+        /* width: 84%; */
+        margin: 0px 10px 0px 10px;        
+        height: 100%;
+        background: #784c82;
+        border-radius: 3px;        
+    }
+
 /*search bar*/
 
 /*input {*/
@@ -66,7 +89,7 @@
 .search-bar-submit {
     background-color: #e5e5e5;
     background-image: url(../../assets/search.svg);
-    background-size: 100%;
+    background-size: 100% 100%;
     border: 1px solid #ddd;
     border-top-right-radius: 2px;
     border-bottom-right-radius: 2px;
@@ -89,13 +112,19 @@ body {
 
 .react-autosuggest__container {
     position: relative;
-    width: 600px;
+    /*width: 600px;*/
+	display: -webkit-flex;
+	display: flex;    
+    justify-content: center;
+    align-content: center;    
+    flex: 2;
+    height: 100%;
 }
 
 .react-autosuggest__input {
     width: 400px;
-    height: 30px;
-    padding: 10px 20px;
+    /*height: 30px;*/
+    /*padding: 10px 20px;*/
     font-family: Helvetica, sans-serif;
     font-weight: 300;
     font-size: 16px;

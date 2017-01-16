@@ -12,8 +12,10 @@ export default class Header extends Component {
 
             <div className="app-header">
                 <img src={logo} className="app-logo" alt="logo"/>
-                <div>
+                <div className="container">
                     <h2>Amazon Discounts</h2>
+                    <div className="btn">place-holder</div>
+                    <div className="btn">place-holder</div>
                     <SearchBar></SearchBar>
                 </div>
             </div>)
@@ -115,8 +117,9 @@ class SearchBar extends React.Component {
     };
     onSearch = () => {
         let searchWords = this.state.value;
-        let searchResults = getSearchResultRequest(searchWords)
-        return searchResults
+        let searchResults = getSearchResultRequest(searchWords);
+        console.error(searchResults);
+        return searchResults;
 
     };
 
@@ -130,18 +133,18 @@ class SearchBar extends React.Component {
 
         return (
             <div className="react-autosuggest__container">
-            <Autosuggest
-                suggestions={suggestions}
-                onSuggestionsFetchRequested={this.onSuggestionsFetchRequested}
-                onSuggestionsClearRequested={this.onSuggestionsClearRequested}
-                getSuggestionValue={getSuggestionValue}
-                renderSuggestion={renderSuggestion}
-                inputProps={inputProps}/>
-            <input className="search-bar-submit"
-                   type="submit"
-                   onClick={this.onSearch}
-                   // change "" to {this.onSearch()} it will break
-            />
+                <Autosuggest
+                    suggestions={suggestions}
+                    onSuggestionsFetchRequested={this.onSuggestionsFetchRequested}
+                    onSuggestionsClearRequested={this.onSuggestionsClearRequested}
+                    getSuggestionValue={getSuggestionValue}
+                    renderSuggestion={renderSuggestion}
+                    inputProps={inputProps}/>
+                <div className="search-bar-submit"
+
+                    onClick={this.onSearch}
+                    // change "" to {this.onSearch()} it will break
+                />
             </div>
         );
     }
