@@ -41,7 +41,7 @@ class SearchRequests(object):
         """
         item_search_request_link = self.compose_item_search_link(key_words=key_words, search_index=search_index)
         response = requests.get(url=item_search_request_link)
-        return response
+        return response.content
 
 
 

@@ -3,12 +3,11 @@ import tornado.web
 import logging.config
 from tornado.httpserver import HTTPServer
 import argparse
-import datetime as dt
 import json
 
 # user defined packages
 import process
-
+from search_responds import SearchResponds
 
 class Handler(tornado.web.RequestHandler):
     """
@@ -26,6 +25,7 @@ class Handler(tornado.web.RequestHandler):
 
     def initialize(self):
         self.logger = logging.getLogger("api_logger")
+        self.search_response = SearchResponds()
 
     def get(self):
         """
@@ -36,8 +36,7 @@ class Handler(tornado.web.RequestHandler):
         # get bucket name and data config file name from users
         optional1 = self.get_argument("optional1")
         print optional1
-        result = {}
-        result = process.process_result()
+        result = self.search_response.get_item_search_response()#
         self.finish(json.dumps(result))
 
 
