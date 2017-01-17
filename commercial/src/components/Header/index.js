@@ -20,6 +20,72 @@ export default class Header extends Component {
                 </div>
             </div>)
     }
+
+
+// const people = [
+//     {
+//         first: 'Charlie',
+//         last: 'Brown',
+//         twitter: 'dancounsell'
+//     },
+//     {
+//         first: 'Charlotte',
+//         last: 'White',
+//         twitter: 'mtnmissy'
+//     },
+//     {
+//         first: 'Chloe',
+//         last: 'Jones',
+//         twitter: 'ladylexy'
+//     },
+//     {
+//         first: 'Cooper',
+//         last: 'King',
+//         twitter: 'steveodom'
+//     }
+// ];
+
+// // https://developer.mozilla.org/en/docs/Web/JavaScript/Guide/Regular_Expressions#Using_Special_Characters
+// function escapeRegexCharacters(str) {
+//     return str.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+// }
+
+// function getSuggestions(value) {
+//     const escapedValue = escapeRegexCharacters(value.trim());
+
+//     if (escapedValue === '') {
+//         return [];
+//     }
+
+//     const regex = new RegExp('\\b' + escapedValue, 'i');
+
+//     return people.filter(person => regex.test(getSuggestionValue(person)));
+// }
+
+// function getSuggestionValue(suggestion) {
+//     return `${suggestion.first} ${suggestion.last}`;
+// }
+
+// function renderSuggestion(suggestion, {query}) {
+//     const suggestionText = `${suggestion.first} ${suggestion.last}`;
+//     const matches = AutosuggestHighlightMatch(suggestionText, query);
+//     const parts = AutosuggestHighlightParse(suggestionText, matches);
+
+//     return (
+//         <span className={'suggestion-content ' + suggestion.twitter}>
+//       <span className="name">
+//         {
+//             parts.map((part, index) => {
+//                 const className = part.highlight ? 'highlight' : null;
+
+//                 return (
+//                     <span className={className} key={index}>{part.text}</span>
+//                 );
+//             })
+//         }
+//       </span>
+//     </span>
+//     );
 }
 
 
@@ -74,11 +140,54 @@ const languages = [
  const getSuggestionValue = suggestion => suggestion.first;
 
  // Use your imagination to render suggestions.
- const renderSuggestion = suggestion => (
-   <div>
-     {suggestion.first}
-   </div>
- );
+ const renderSuggestion = (suggestion, {query}) => {
+    //  alert(query);
+     return (
+  <div className="suggest_box">
+    {suggestion.first}
+  </div>);     
+    // let suggestionText = `${suggestion.first} ${suggestion.last}`;
+    // let matches = AutosuggestHighlightMatch(suggestionText, query);
+    // let parts = AutosuggestHighlightParse(suggestionText, matches);
+
+    // return (
+    //     <span className={'suggestion-content ' + suggestion.twitter}>
+    //   <span className="name">
+    //     {
+    //         parts.map((part, index) => {
+    //             const className = part.highlight ? 'highlight' : null;
+
+    //             return (
+    //                 <span className={className} key={index}>{part.text}</span>
+    //             );
+    //         })
+    //     }
+    //   </span>
+    // </span>
+    // );
+ };
+
+// function renderSuggestion(suggestion, {query}) {
+//     const suggestionText = `${suggestion.first} ${suggestion.last}`;
+//     const matches = AutosuggestHighlightMatch(suggestionText, query);
+//     const parts = AutosuggestHighlightParse(suggestionText, matches);
+
+//     return (
+//         <span className={'suggestion-content ' + suggestion.twitter}>
+//       <span className="name">
+//         {
+//             parts.map((part, index) => {
+//                 const className = part.highlight ? 'highlight' : null;
+
+//                 return (
+//                     <span className={className} key={index}>{part.text}</span>
+//                 );
+//             })
+//         }
+//       </span>
+//     </span>
+//     );
+// };
 class Example extends React.Component {
 //  export default class Example extends React.Component {
    constructor() {

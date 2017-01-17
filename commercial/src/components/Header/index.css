@@ -120,6 +120,9 @@ body {
     flex: 2;
     height: 100%;
 }
+    .suggest_box {
+        background-color: grey;
+    }
 
 .react-autosuggest__input {
     width: 400px;
