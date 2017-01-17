@@ -16,13 +16,27 @@ export default class Header extends Component {
                     <h2>Amazon Discounts</h2>
                     <div className="btn">place-holder</div>
                     <div className="btn">place-holder</div>
-                    <SearchBar></SearchBar>
+                    <Example></Example>
                 </div>
             </div>)
     }
-};
+}
 
-const people = [
+
+//Imagine you have a list of languages that you'd like to autosuggest.
+
+//  const languages = [
+//    {
+//      name: 'C',
+//      year: 1972
+//    },
+//    {
+//      name: 'Elm',
+//      year: 2012
+//    },
+
+//  ];
+const languages = [
     {
         first: 'Charlie',
         last: 'Brown',
@@ -44,108 +58,145 @@ const people = [
         twitter: 'steveodom'
     }
 ];
+ // Teach Autosuggest how to calculate suggestions for any given input value.
+ const getSuggestions = value => {
+   const inputValue = value.trim().toLowerCase();
+   const inputLength = inputValue.length;
 
-// https://developer.mozilla.org/en/docs/Web/JavaScript/Guide/Regular_Expressions#Using_Special_Characters
-function escapeRegexCharacters(str) {
-    return str.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
-}
+   return inputLength === 0 ? [] : languages.filter(lang =>
+     lang.first.toLowerCase().slice(0, inputLength) === inputValue
+   );
+ };
 
-function getSuggestions(value) {
-    const escapedValue = escapeRegexCharacters(value.trim());
+ // When suggestion is clicked, Autosuggest needs to populate the input element
+ // based on the clicked suggestion. Teach Autosuggest how to calculate the
+ // input value for every given suggestion.
+ const getSuggestionValue = suggestion => suggestion.first;
 
-    if (escapedValue === '') {
-        return [];
-    }
+ // Use your imagination to render suggestions.
+ const renderSuggestion = suggestion => (
+   <div>
+     {suggestion.first}
+   </div>
+ );
+class Example extends React.Component {
+//  export default class Example extends React.Component {
+   constructor() {
+     super();
 
-    const regex = new RegExp('\\b' + escapedValue, 'i');
+     // Autosuggest is a controlled component.
+     // This means that you need to provide an input value
+     // and an onChange handler that updates this value (see below).
+     // Suggestions also need to be provided to the Autosuggest,
+     // and they are initially empty because the Autosuggest is closed.
+     this.state = {
+       value: '',
+       suggestions: []
+     };
+   }
 
-    return people.filter(person => regex.test(getSuggestionValue(person)));
-}
+   onChange = (event, { newValue }) => {
+     this.setState({
+       value: newValue
+     });
+   };
 
-function getSuggestionValue(suggestion) {
-    return `${suggestion.first} ${suggestion.last}`;
-}
+   // Autosuggest will call this function every time you need to update suggestions.
+   // You already implemented this logic above, so just use it.
+   onSuggestionsFetchRequested = ({ value }) => {
+     this.setState({
+       suggestions: getSuggestions(value)
+     });
+   };
 
-function renderSuggestion(suggestion, {query}) {
-    const suggestionText = `${suggestion.first} ${suggestion.last}`;
-    const matches = AutosuggestHighlightMatch(suggestionText, query);
-    const parts = AutosuggestHighlightParse(suggestionText, matches);
+   // Autosuggest will call this function every time you need to clear suggestions.
+   onSuggestionsClearRequested = () => {
+     this.setState({
+       suggestions: []
+     });
+   };
 
-    return (
-        <span className={'suggestion-content ' + suggestion.twitter}>
-      <span className="name">
-        {
-            parts.map((part, index) => {
-                const className = part.highlight ? 'highlight' : null;
+   render() {
+     const { value, suggestions } = this.state;
 
-                return (
-                    <span className={className} key={index}>{part.text}</span>
-                );
-            })
-        }
-      </span>
-    </span>
-    );
-}
+     // Autosuggest will pass through all these props to the input element.
+     const inputProps = {
+       placeholder: 'Type a programming language',
+       value,
+       onChange: this.onChange
+     };
 
-class SearchBar extends React.Component {
-    constructor() {
-        super();
+     // Finally, render it!
+     return (
+       <Autosuggest
+         suggestions={suggestions}
+         onSuggestionsFetchRequested={this.onSuggestionsFetchRequested}
+         onSuggestionsClearRequested={this.onSuggestionsClearRequested}
+         getSuggestionValue={getSuggestionValue}
+         renderSuggestion={renderSuggestion}
+         inputProps={inputProps}
+       />
+     );
+   }
+ }
+// class SearchBar extends React.Component {
+//     constructor() {
+//         super();
 
-        this.state = {
-            value: '',
-            suggestions: []
-        };
-    }
+//         this.state = {
+//             value: '',
+//             suggestions: []
+//         };
+//     }
 
-    onChange = (event, {newValue, method}) => {
-        this.setState({
-            value: newValue
-        });
-    };
+//     onChange = (event, {newValue, method}) => {
+//         this.setState({
+//             value: newValue
+//         });
+//     };
 
-    onSuggestionsFetchRequested = ({value}) => {
-        this.setState({
-            suggestions: getSuggestions(value)
-        });
-    };
+//     onSuggestionsFetchRequested = ({value}) => {
+//         this.setState({
+//             suggestions: getSuggestions(value)
+//         });
+//     };
 
-    onSuggestionsClearRequested = () => {
-        this.setState({
-            suggestions: []
-        });
-    };
-    onSearch = () => {
-        let searchWords = this.state.value;
-        let searchResults = getSearchResultRequest(searchWords);
-        console.error(searchResults);
-        return searchResults;
+//     onSuggestionsClearRequested = () => {
+//         this.setState({
+//             suggestions: []
+//         });
+//     };
+//     onSearch = () => {
+//         let searchWords = this.state.value;
+//         let searchResults = getSearchResultRequest(searchWords);
+//         console.error(searchResults);
+//         return searchResults;
 
-    };
+//     };
 
-    render() {
-        const {value, suggestions} = this.state;
-        const inputProps = {
-            placeholder: "Search",
-            value,
-            onChange: this.onChange
-        };
+//     render() {
+//         const {value, suggestions} = this.state;
+//         const inputProps = {
+//             placeholder: "Search",
+//             value,
+//             onChange: this.onChange
+//         };
 
-        return (
-            <div className="react-autosuggest__container">
-                <Autosuggest
-                    suggestions={suggestions}
-                    onSuggestionsFetchRequested={this.onSuggestionsFetchRequested}
-                    onSuggestionsClearRequested={this.onSuggestionsClearRequested}
-                    getSuggestionValue={getSuggestionValue}
-                    renderSuggestion={renderSuggestion}
-                    inputProps={inputProps}/>
-                <div className="search-bar-submit"
+//         return (
+//             <div className="react-autosuggest__container">
+//                 <Autosuggest
+//                     suggestions={suggestions}
+//                     onSuggestionsFetchRequested={this.onSuggestionsFetchRequested}
+//                     onSuggestionsClearRequested={this.onSuggestionsClearRequested}
+//                     getSuggestionValue={getSuggestionValue}
+//                     renderSuggestion={renderSuggestion}
+//                     inputProps={inputProps}/>
+//                 <div className="search-bar-submit"
 
-                    onClick={this.onSearch}
-                    // change "" to {this.onSearch()} it will break
-                />
-            </div>
-        );
-    }
-}
+//                     onClick={this.onSearch}
+//                     // change "" to {this.onSearch()} it will break
+//                 />
+//             </div>
+//         );
+//     }
+// }

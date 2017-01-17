@@ -1,5 +1,6 @@
 amazon/node_modules/*
 amazon/commercial/node_modules/*
+example/*
 *.pyc
 *.idea*
 .DS_Store
