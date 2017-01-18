@@ -1,5 +1,7 @@
 import Request from 'superagent'
 
+export const RECEIVE_SEARCH_RESULT = 'RECEIVE_SEARCH_RESULT'
+
 // request to call api for search
 export function getSearchResultRequest(key_words) {
     // let url =  "http://localhost:12345/amazon_api";
