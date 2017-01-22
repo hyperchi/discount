@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
-
+import { connect } from 'react-redux'
 // user defined
 import './App.css';
 import Header from './components/Header'
@@ -42,6 +42,30 @@ class App extends Component {
   }
 }
 
+function mapStateToProps(state) {
+  console.error(state);
+//   const { selectedReddit, postsByReddit } = state
+//   console.error(postsByReddit);
+//   const {
+//     isFetching,
+//     lastUpdated,
+//     items: posts
+//   } = postsByReddit[selectedReddit] || {
+//     isFetching: true,
+//     items: []
+//   }
+//   console.error(isFetching);
+//   console.error(lastUpdated);
+//   console.error(posts);
 
+//   return {
+//     selectedReddit,
+//     posts,
+//     isFetching,
+//     lastUpdated
+//   }
+    return state; 
+}
 
-export default App;
+export default connect(mapStateToProps)(App)
+

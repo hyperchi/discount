@@ -1,6 +1,8 @@
 import { combineReducers } from 'redux'
 import {
-  RECEIVE_SEARCH_RESULT
+  RECEIVE_SEARCH_RESULT,
+  SELECT_REDDIT, INVALIDATE_REDDIT,
+  REQUEST_POSTS, RECEIVE_POSTS  
 } from '../actions'
 
 function posts(state = {

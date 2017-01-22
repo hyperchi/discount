@@ -5,7 +5,7 @@ import AutosuggestHighlightParse from 'autosuggest-highlight/match'
 // user defined
 import logo from '../../assets/logo.svg';
 import './index.css'
-import {getSearchResultRequest} from '../../action'
+import {getSearchResultRequest} from '../../actions'
 const languages = [
     {
         first: 'Charlie',
